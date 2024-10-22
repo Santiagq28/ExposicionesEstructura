@@ -137,7 +137,7 @@ public class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_imprimirPilaActionPerformed
 
     private void elementoActualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elementoActualActionPerformed
-        textoPantalla.setText(pila.recorrerPila(i));
+        textoPantalla.setText(pila.actual());
     }//GEN-LAST:event_elementoActualActionPerformed
 
     /**

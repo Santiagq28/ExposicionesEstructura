@@ -48,4 +48,7 @@ public class PilasEjercicio {
         String text = pila.recorrerPila(i);
         return text;
     }
+    public String actual(){
+        return pila.peek();
+    }
 }
