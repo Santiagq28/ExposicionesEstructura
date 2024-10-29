@@ -12,7 +12,8 @@ import javax.swing.JOptionPane;
  */
 public class Vista extends javax.swing.JFrame {
     PilasEjercicio pila = new PilasEjercicio();
-    int i = 0;
+    int i = -1;
+    int i2 = -1;
     /**
      * Creates new form Vista
      */
@@ -38,14 +39,14 @@ public class Vista extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        agregarPila.setText("Agregar a la Pila");
+        agregarPila.setText("Agregar al historial");
         agregarPila.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 agregarPilaActionPerformed(evt);
             }
         });
 
-        imprimirPila.setText("Imprimir Pila");
+        imprimirPila.setText("Historial");
         imprimirPila.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 imprimirPilaActionPerformed(evt);
@@ -66,7 +67,7 @@ public class Vista extends javax.swing.JFrame {
             }
         });
 
-        elementoActual.setText("ElementoActual");
+        elementoActual.setText("Pag. Actual");
         elementoActual.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 elementoActualActionPerformed(evt);
@@ -78,41 +79,44 @@ public class Vista extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(146, 146, 146)
-                            .addComponent(imprimirPila))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(171, 171, 171)
-                            .addComponent(textoPantalla))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(137, 137, 137)
-                            .addComponent(agregarPila)))
+                .addGap(83, 83, 83)
+                .addComponent(textoPantalla)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
                         .addComponent(recorrerAtras)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(elementoActual)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                .addComponent(recorrerAdelante)
-                .addGap(27, 27, 27))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                        .addComponent(elementoActual)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                        .addComponent(recorrerAdelante))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(117, 117, 117)
+                                .addComponent(imprimirPila))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(90, 90, 90)
+                                .addComponent(agregarPila)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(67, 67, 67)
+                .addGap(33, 33, 33)
                 .addComponent(agregarPila)
                 .addGap(18, 18, 18)
                 .addComponent(imprimirPila)
-                .addGap(18, 18, 18)
-                .addComponent(textoPantalla)
-                .addGap(49, 49, 49)
+                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(recorrerAtras)
                     .addComponent(elementoActual)
                     .addComponent(recorrerAdelante))
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addGap(23, 23, 23)
+                .addComponent(textoPantalla)
+                .addContainerGap(73, Short.MAX_VALUE))
         );
 
         pack();
@@ -120,6 +124,10 @@ public class Vista extends javax.swing.JFrame {
 
     private void recorrerAdelanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recorrerAdelanteActionPerformed
         i = pila.recorrerAdelante(i);
+        if(i>i2){
+            pila.agregarPaginas(JOptionPane.showInputDialog("Ingrese el nombre de la nueva pagina: "));
+            i2 ++;
+        }
         textoPantalla.setText(pila.recorrerPila(i));
     }//GEN-LAST:event_recorrerAdelanteActionPerformed
 
@@ -130,6 +138,8 @@ public class Vista extends javax.swing.JFrame {
 
     private void agregarPilaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarPilaActionPerformed
         pila.agregarPaginas(JOptionPane.showInputDialog("Inserte la Página: "));
+        i2 ++;
+        i++;
     }//GEN-LAST:event_agregarPilaActionPerformed
 
     private void imprimirPilaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirPilaActionPerformed
@@ -138,6 +148,7 @@ public class Vista extends javax.swing.JFrame {
 
     private void elementoActualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elementoActualActionPerformed
         textoPantalla.setText(pila.actual());
+        i=i2;
     }//GEN-LAST:event_elementoActualActionPerformed
 
     /**

@@ -22,7 +22,7 @@ public class PilasEjercicio {
     }
     
     public int recorrerAdelante(int i){
-        if((i+1) < pila.size()){
+        if((i+1) <= pila.size()){
             i++;
         }else{
             JOptionPane.showMessageDialog(null,"No hay elementos adelante");
