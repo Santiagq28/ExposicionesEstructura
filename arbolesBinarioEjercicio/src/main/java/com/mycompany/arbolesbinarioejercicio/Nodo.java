@@ -13,6 +13,20 @@ import javax.swing.JOptionPane;
 public class Nodo {
 
     /**
+     * @return the codigo
+     */
+    public String getCodigo() {
+        return codigo;
+    }
+
+    /**
+     * @param codigo the codigo to set
+     */
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    /**
      * @return the ventas
      */
     public int getVentas() {
@@ -81,6 +95,7 @@ public class Nodo {
     public void setMarca(String marca) {
         this.marca = marca;
     }
+    private String codigo;
     private int valor;
     private Nodo nodoIzq;
     private Nodo nodoDerecho;
@@ -91,7 +106,8 @@ public class Nodo {
     private int ventas;
     
 
-    public Nodo(int valor, String name, String color, int dimensiones, String marca, int ventas) {
+    public Nodo(String codigo,int valor, String name, String color, int dimensiones, String marca, int ventas) {
+        this.codigo = codigo;
         this.valor = valor;
         this.name = name;
         this.color = color;
@@ -127,26 +143,26 @@ public class Nodo {
     }
 
     //Funcion para agregar un nodo a la derecha si es mayor y a la izquierda si es menor
-    public void insertar(int _valor, String _name, String _color, int _dimensiones, String _marca, int _ventas) {
+    public void insertar(String _codigo,int _valor, String _name, String _color, int _dimensiones, String _marca, int _ventas) {
         //if para comprobar que el valor no se repita
-        if (_name.equals(this.name)) {
+        if (_codigo.equals(this.codigo)) {
             JOptionPane.showMessageDialog(null, "Ese producto ya esta en el arbol");
             return;
         }
 
-        if (_ventas < this.ventas) {
+        if (_ventas > this.ventas) {
             //Insertar en lado izquierdo
             if (this.nodoIzq == null) {
-                this.nodoIzq = new Nodo(_valor, _name, _color, _dimensiones, _marca, _ventas);
+                this.nodoIzq = new Nodo(_codigo,_valor, _name, _color, _dimensiones, _marca, _ventas);
             } else {
-                this.nodoIzq.insertar(_valor, _name, _color, _dimensiones, _marca, _ventas);
+                this.nodoIzq.insertar(_codigo,_valor, _name, _color, _dimensiones, _marca, _ventas);
             }
         } else {
             //Insertar en lado derecho
             if (this.nodoDerecho == null) {
-                this.nodoDerecho = new Nodo(_valor, _name, _color, _dimensiones, _marca, _ventas);
+                this.nodoDerecho = new Nodo(_codigo,_valor, _name, _color, _dimensiones, _marca, _ventas);
             } else {
-                this.nodoDerecho.insertar(_valor, _name, _color, _dimensiones, _marca, _ventas);
+                this.nodoDerecho.insertar(_codigo,_valor, _name, _color, _dimensiones, _marca, _ventas);
             }
         }
     }

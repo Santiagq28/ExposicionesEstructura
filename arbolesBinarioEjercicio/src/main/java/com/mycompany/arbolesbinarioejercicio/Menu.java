@@ -94,7 +94,8 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_crearNodosActionPerformed
 
     private void mostrarProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarProductosActionPerformed
-        String resultado = abe.dispararPreorden();
+        String resultado = "PRODUCTOS RECOMENDADOS \n Nombre (Codigo): Ventas \n";
+        resultado += abe.dispararPostorden();
         JOptionPane.showMessageDialog(null, resultado);
     }//GEN-LAST:event_mostrarProductosActionPerformed
 
