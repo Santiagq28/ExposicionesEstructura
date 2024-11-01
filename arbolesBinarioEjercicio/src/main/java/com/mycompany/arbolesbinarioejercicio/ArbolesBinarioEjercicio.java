@@ -106,17 +106,26 @@ public class ArbolesBinarioEjercicio {
     }
 
     // Inorden: izquierda -> raíz -> derecha
-    public String dispararInorden() {
-        return inorden(this.inicial).trim();
+    public String dispararInorden(String caract) {
+        contador = 0;
+        return inorden(this.inicial,caract).trim();
     }
 
-    public String inorden(Nodo nodo) {
+    public String inorden(Nodo nodo, String caract) {
         if (nodo == null) {
             return "";
         } else {
-            String resultado = inorden(nodo.getNodoIzq());
-            resultado += nodo.getValor() + ", ";
-            resultado += inorden(nodo.getNodoDerecho());
+            String resultado = "";
+            if(caract.equals(nodo.getColor())||caract.equals(nodo.getMarca())||caract.equals(nodo.getName())){
+                if (((contador + 1) % 10) == 0) {
+                    resultado += nodo.getName() + "("+nodo.getCodigo()+"): " + nodo.getVentas() + "\n";
+                }else {
+                    resultado += nodo.getName() + "("+nodo.getCodigo()+"): " + nodo.getVentas() + ", ";
+                }
+            }
+            contador++;
+            resultado += inorden(nodo.getNodoIzq(), caract);
+            resultado += inorden(nodo.getNodoDerecho(), caract);
             return resultado;
         }
     }

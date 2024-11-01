@@ -33,6 +33,7 @@ public class Menu extends javax.swing.JFrame {
         agregarNodo = new javax.swing.JButton();
         crearNodos = new javax.swing.JButton();
         mostrarProductos = new javax.swing.JButton();
+        buscarSimilares = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,10 +51,17 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        mostrarProductos.setText("Mostrar Productos");
+        mostrarProductos.setText("Productos Recomendados");
         mostrarProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mostrarProductosActionPerformed(evt);
+            }
+        });
+
+        buscarSimilares.setText("Buscar Similares");
+        buscarSimilares.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarSimilaresActionPerformed(evt);
             }
         });
 
@@ -62,13 +70,17 @@ public class Menu extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(130, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(mostrarProductos)
+                    .addComponent(buscarSimilares)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(agregarNodo)
                         .addComponent(crearNodos)))
                 .addGap(141, 141, 141))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(113, 113, 113)
+                .addComponent(mostrarProductos)
+                .addContainerGap(118, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -77,9 +89,11 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(crearNodos)
                 .addGap(18, 18, 18)
                 .addComponent(agregarNodo)
-                .addGap(18, 18, 18)
+                .addGap(24, 24, 24)
                 .addComponent(mostrarProductos)
-                .addContainerGap(143, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(buscarSimilares)
+                .addContainerGap(102, Short.MAX_VALUE))
         );
 
         pack();
@@ -98,6 +112,12 @@ public class Menu extends javax.swing.JFrame {
         resultado += abe.dispararPostorden();
         JOptionPane.showMessageDialog(null, resultado);
     }//GEN-LAST:event_mostrarProductosActionPerformed
+
+    private void buscarSimilaresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarSimilaresActionPerformed
+        String resultado2 = "PRODUCTOS SIMILARES: \n Nombre (Codigo): Ventas \n";
+        resultado2 += abe.dispararInorden(JOptionPane.showInputDialog(null, "Ingrese la característica del producto"));
+        JOptionPane.showMessageDialog(null, resultado2);
+    }//GEN-LAST:event_buscarSimilaresActionPerformed
 
     /**
      * @param args the command line arguments
@@ -136,6 +156,7 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton agregarNodo;
+    private javax.swing.JButton buscarSimilares;
     private javax.swing.JButton crearNodos;
     private javax.swing.JButton mostrarProductos;
     // End of variables declaration//GEN-END:variables
